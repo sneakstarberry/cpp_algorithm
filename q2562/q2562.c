@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h> 
+
 typedef struct Node{
 	int data;
 	int count;
@@ -40,10 +41,11 @@ void scan(){
 	t_Node * curr = head;
 	for(int i=0; i < 9; i++){
 		if (curr->data == MAX){
-			printf("%d\n%d", curr->data, curr->count);
+			printf("%d\n", curr->data);
+            printf("%d", curr->count);
 		}
+        t_Node * garbage = curr;
 		curr = curr->next;
-		t_Node * garbage = curr;
 		free(garbage);
 	}
 }
@@ -57,3 +59,4 @@ int main() {
 	}
 	scan();
 }
+

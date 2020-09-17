@@ -38,7 +38,7 @@ void eval(int input){
 
 void scan(){
 	t_Node * curr = head;
-	while(curr->next != NULL){
+	for(int i=0; i < 9; i++){
 		if (curr->data == MAX){
 			printf("%d\n%d", curr->data, curr->count);
 		}

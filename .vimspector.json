@@ -8,8 +8,10 @@
         "args": [],
         "cwd": "/Volumes/SeagateExpansionDrive/code/c/cpp_algorithm",
         "environment": [],
-        "externalConsole": true,
-        "MIMode": "lldb"
+	"console": "integrateConsole",
+	"externalConsole": true,
+	"internalConsoleOptions": "openOnSessionStart",
+	"MIMode": "lldb"
       }
     },
     "Tasks":{

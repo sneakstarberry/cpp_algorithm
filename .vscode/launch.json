@@ -15,7 +15,7 @@
         "environment": [],
         "internalConsoleOptions": "openOnSessionStart",
         
-        // "externalConsole": true,
+        "externalConsole": true,
         "MIMode": "lldb",
         "preLaunchTask": "clang++ build active file",
         "logging": {

@@ -1,0 +1,24 @@
+{
+  "configurations": {
+      "Launch": {
+        "adapter": "vscode-cpptools",
+        "configuration": {
+          "request": "launch",
+          "program": "${fileDirname}/${fileBasenameNoExtension}",
+          "args": [],
+          "cwd": "${workspaceDir}",
+          "environment": [],
+          "externalConsole": true,
+          "MIMode": "lldb"
+        }
+      },
+      "Attach": {
+        "adapter": "vscode-cpptools",
+        "configuration": {
+          "request": "attach",
+          "program": "${fileDirname}/${fileBasenameNoExtension}",
+          "MIMode": "lldb"
+        }
+      }
+    }
+ }

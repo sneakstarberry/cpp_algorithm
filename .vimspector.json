@@ -1,24 +1,56 @@
 {
   "configurations": {
-      "Launch": {
-        "adapter": "vscode-cpptools",
-        "configuration": {
-          "request": "launch",
-          "program": "${fileDirname}/${fileBasenameNoExtension}",
-          "args": [],
-          "cwd": "${workspaceDir}",
-          "environment": [],
-          "externalConsole": true,
-          "MIMode": "lldb"
-        }
-      },
-      "Attach": {
-        "adapter": "vscode-cpptools",
-        "configuration": {
-          "request": "attach",
-          "program": "${fileDirname}/${fileBasenameNoExtension}",
-          "MIMode": "lldb"
-        }
+    "Launch": {
+      "adapter": "vscode-cpptools",
+      "configuration": {
+        "request": "launch",
+        "program": "${fileDirname}/${fileBasenameNoExtension}",
+        "args": [],
+        "cwd": "${workspaceDir}",
+        "environment": [],
+        "externalConsole": true,
+        "MIMode": "lldb",
+        "preLaunchTask": "clang++ build active file"
+      }
+    },
+    "Attach": {
+      "adapter": "vscode-cpptools",
+      "configuration": {
+        "request": "attach",
+        "program": "${fileDirname}/${fileBasenameNoExtension}",
+        "MIMode": "lldb"
       }
     }
- }
+  },
+  "Tasks": {
+    "type": "shell",
+    "label": "clang++ build active file",
+    "command": "/usr/bin/clang++",
+    "args": [
+      "-std=c++17",
+      "-stdlib=libc++",
+      "-g",
+      "${file}",
+      "-o",
+      "${fileDirname}/${fileBasenameNoExtension}"
+    ],
+    "options": {
+      "cwd": "${workspaceFolder}"
+    },
+    "problemMatcher": [
+      "$gcc"
+    ],
+    "group": {
+      "kind": "build",
+      "isDefault": true
+    }
+  },
+  "Attach": {
+    "adapter": "vscode-cpptools",
+    "configuration": {
+      "request": "attach",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
+      "MIMode": "lldb"
+    }
+  }
+}

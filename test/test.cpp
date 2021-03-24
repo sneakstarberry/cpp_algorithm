@@ -3,9 +3,11 @@ using namespace std;
 
 int main() {
 
-    if(~10 && 10 <= 12){
-        cout << "된다." << '\n';
-    } else{
-        cout << "안된다." << '\n';
-    }
+  int a[2];
+  if (a[4]) {
+    cout << a[4] << endl;
+    cout << "can access" << endl;
+  } else {
+    cout << "can't access" << endl;
+  }
 }

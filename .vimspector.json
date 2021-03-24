@@ -17,40 +17,56 @@
       "adapter": "vscode-cpptools",
       "configuration": {
         "request": "attach",
+        "preLaunchTask": "clang++ build active file",
         "program": "${fileDirname}/${fileBasenameNoExtension}",
         "MIMode": "lldb"
       }
-    }
-  },
-  "Tasks": {
-    "type": "shell",
-    "label": "clang++ build active file",
-    "command": "/usr/bin/clang++",
-    "args": [
-      "-std=c++17",
-      "-stdlib=libc++",
-      "-g",
-      "${file}",
-      "-o",
-      "${fileDirname}/${fileBasenameNoExtension}"
-    ],
-    "options": {
-      "cwd": "${workspaceFolder}"
     },
-    "problemMatcher": [
-      "$gcc"
-    ],
-    "group": {
-      "kind": "build",
-      "isDefault": true
-    }
-  },
-  "Attach": {
-    "adapter": "vscode-cpptools",
-    "configuration": {
-      "request": "attach",
-      "program": "${fileDirname}/${fileBasenameNoExtension}",
-      "MIMode": "lldb"
+    "ClangBuild": {
+      "type": "shell",
+      "label": "clang++ build active file",
+      "command": "/usr/bin/clang++",
+      "args": [
+        "-std=c++17",
+        "-stdlib=libc++",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    "g++ build": {
+      "type": "shell",
+      "label": "clang++ build active file",
+      "command": "/usr/bin/clang++",
+      "args": [
+        "-std=c++17",
+        "-stdlib=libc++",
+        "-g",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     }
   }
 }

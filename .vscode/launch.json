@@ -42,8 +42,7 @@
           "ignoreFailures": true
         }
       ],
-      "preLaunchTask": "g++ build active file",
-      "miDebuggerPath": "lldb"
+      "preLaunchTask": "g++ build active file"
     }
   ]
 }

@@ -1,0 +1,33 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int N;
+int DP[35];
+
+int main() {
+  cin >> N;
+
+  if (N % 2 == 1) {
+    cout << 0;
+    return 0;
+  }
+
+  DP[0] = 1;
+  DP[1] = 0;
+  DP[2] = 3;
+  DP[3] = 0;
+  DP[4] = 11;
+
+  for (int i = 4; i <= N; i+=2) {
+    DP[i] = DP[i - 2] * 3;
+    for (int j = i - 4; j >= 0; j-=2) {
+      DP[i] += DP[j] * 2;
+    }
+  }
+
+  cout << DP[N];
+
+  return 0;
+}

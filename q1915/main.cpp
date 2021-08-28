@@ -1,0 +1,33 @@
+#include <cmath>
+#include <iostream>
+#define INF 1001
+using namespace std;
+
+int MAX = -1;
+
+int main(){
+  int N, M;
+  int DP[INF][INF]= {};
+  cin >> N >> M;
+
+  for (int i=0; i < N; ++i) {
+    string tmp;
+    cin >> tmp;
+    for(int j=0;j<M;j++) {
+      DP[i][j] = tmp[j] - '0';
+    }
+  }
+
+  for(int i=1;i<N;++i){
+    for(int j=1;j<M;j++){
+      if(DP[i][j] != 0) {
+	DP[i][j] = min(min(DP[i][j-1],DP[i-1][j-1]), DP[i-1][j]) + 1;
+	if(MAX < DP[i][j]) {
+	  MAX = DP[i][j];
+	}
+      }
+    }
+  }
+  cout << MAX;
+  return 0;
+}

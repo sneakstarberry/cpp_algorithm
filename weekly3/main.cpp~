@@ -1,0 +1,96 @@
+#include <queue>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+struct Piece {
+  int x, y;
+  vector<vector<int> > map;
+
+  void rotate() {
+    int tmpy = x;
+    int tmpx = y;
+    int tmpmap[6][6] = {
+        0,
+    };
+    for (int i = 0; i < y; i++) {
+      for (int j = 0; j < x; j++) {
+        tmpmap[y - j - 1][i] = map[i][j];
+      }
+    }
+
+    for (int i = 0; i < 6; i++) {
+      for (int j = 0; j < 6; j++) {
+        map[i][j] = tmpmap[i][j];
+      }
+    }
+
+    y = tmpy;
+    x = tmpx;
+
+    return;
+  }
+};
+
+
+vector<Piece> game_board_piece;
+void bfs(pair<int, int> start, vector<vector<int>> &board) {
+  int map[12][12] = {
+      0,
+  };
+  int size = board.size();
+  int dx[4] = {0, 1, 0, -1}, dy[4] = {1, 0, -1, 0};
+  pair<int, int> lu = make_pair(0,5) , rd = make_pair(0,5);
+  queue<pair<int, int>> q;
+  q.push(start);
+
+  while (!q.empty()) {
+    int y = q.front().first;
+    int x = q.front().second;
+    if (lu.second > x) {
+      lu.second = x;
+    }
+
+    if (rd.first < y) {
+      rd.first = y;
+    }
+
+    if (rd.second < x) {
+      rd.second = x;
+    }
+    board[y][x] = 1;
+    map[y-start.first][x-start.second+5] = 1;
+    for(int i=0;i<4;i++){
+      int n_y = y + dy[i];
+      int n_x = x + dx[i];
+
+      if(0<=n_x && 0<=n_y && n_x < size && n_y < size && board[n_y][n_x] == 0) {
+	q.push(make_pair(n_y, n_x));
+      }
+    }
+
+  }
+  vector<vector<int> > piece(6, vector<int>(6, 0));
+  for (int i=lu.first; i<rd.first; i++) {
+    int n_i = i - lu.first;
+    for (int j=lu.second; j<rd.second; j++) {
+      int n_j = j - lu.second;
+      piece[n_i][n_j] = map[i][j];
+    }
+  }
+  Piece tmp = {
+    rd.second - lu.second,
+    rd.first - lu.first,
+    piece,
+  };
+
+  game_board_piece.push_back(tmp);
+}
+
+int solution(vector<vector<int>> game_board, vector<vector<int>> table) {
+  int answer = -1;
+  return answer;
+}
+
+int main() { return 0; }

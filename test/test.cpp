@@ -17,3 +17,17 @@ int main() {
   }
   return 0;
 }
+int calculate(int in_time, int out_time, int basic_min,int basic_fee,int min,int min_per_fee){
+    int result = 0;
+    int during_time = out_time - in_time;
+    
+    if(during_time >= basic_min) {
+        result += basic_fee;
+        during_time -= basic_min;
+        // 요금을 내는 횟 수
+        int fee_times = during_time / min;
+        result += min_per_fee*fee_times;
+    }
+    
+    return result;
+}

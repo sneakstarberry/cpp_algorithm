@@ -1,0 +1,57 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int N, M, MAX = 0;
+vector<vector<int> > paper(N, vector<int>(M, 0));
+bool is_visited[501][501] = {{false,}};
+
+struct Tetromino {
+  int n, m;
+  vector<vector<int> > map;
+
+  Tetromino(int n, int m): n(n), m(m) {
+    vector<int> tmp1 = {0,1,0};
+    vector<int> tmp2 = {1,1,1};
+
+    map.push_back(tmp1);
+    map.push_back(tmp2);
+  }
+};
+
+void dfs(pair<int, int> point, int sum, int cnt){
+  if (cnt == 4) {
+    if (MAX < sum) {
+      MAX = sum;
+    }
+    return;
+  }
+
+  for (int i=0; i<4; i++) {
+    int n_y = point.first + "2101"[i] - '1';
+    int n_x = point.second + "1210"[i] - '1';
+
+    if (!(0<=n_y && n_y < N && 0<=n_x && n_x < M)) continue;
+    if (is_visited[n_y][n_x]) continue;
+    is_visited[n_y][n_x] = true;
+    dfs(make_pair(n_y, n_x), sum+paper[n_y][n_x], cnt+1);
+    is_visited[n_y][n_x] = false;
+  }
+};
+
+int main() {
+  ios::sync_with_stdio(0);
+  cin.tie(0);
+  cout.tie(0);
+
+  cin >> N >> M;
+  for (int i=0; i<N; i++) {
+    for (int j=0; j<M; j++) {
+      cin >> paper[i][j];
+    }
+  }
+
+  
+  return 0;
+}

@@ -1,0 +1,52 @@
+#include <iostream>
+
+using namespace ::std;
+
+int N;
+typedef long long ll;
+pair<ll, ll> limits[10001];
+
+void init() { cin >> N; }
+
+ll sum(ll start, ll end) {
+  return ((start + end) * end) / 2;
+}
+
+void solve() {
+  while (N--) {
+    ll k, x;
+    cin >> k >> x;
+
+    int half = ((1 + k) * k) /2;
+    int half2 = half - k;
+    int total = half + half2;
+
+    if (total <= x) {
+      cout << 2*k - 1 << '\n';
+    }
+
+    int h = 1, t = 2*k-1;
+    ll ans = 0;
+    while (h+1<=t) {
+      ll mid = (h + t) / 2;
+      ll cur;
+      cout << mid << '\n';
+      if(k >= mid) cur = sum(1, mid);
+      else cur = sum(1,k) + sum((k-1) - (mid-k),k-1);
+
+      if (cur >= x) {
+	t = mid;
+	ans = mid;
+      } else {
+	h = mid;
+      }
+    }
+    cout << ans << '\n';
+  }
+}
+
+int main() {
+  init();
+  solve();
+  return 0;
+}

@@ -1,0 +1,54 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#define endl '\n'
+using namespace std;
+int T, N;
+vector<int> b, p;
+vector<pair<int, int> > vec;
+int main()
+{
+  cin >> T;
+
+  while(T--) {
+    cin >> N;
+    vector<int> dp(N+1, -1);
+    for (int i=0; i<N; i++) {
+      int tmp;
+      cin >> tmp;
+      b.push_back(tmp);
+    }
+    for (int i=0; i<N; i++) {
+      int tmp;
+      cin >> tmp;
+      p.push_back(tmp);
+    }
+
+    if (b[p[0]] != p[0]) {
+      cout << "-1" << endl;
+      continue;
+    }
+
+    bool flag = false;
+    dp[0] = 0;
+
+    for (int i = 1; i<N; i++) {
+      if (dp[b[p[i]]] == -1) {
+	cout << "-1" << endl;
+	flag = true;
+	break;
+      } else {
+	dp[p[i]] = dp[p[i]] + 1;
+      }
+    }
+
+    if (!flag) {
+      for (int i=0; i<N; i++) {
+        cout << dp[i] << ' ';
+      }
+      cout << endl;
+    }
+    
+  }
+  return 0;
+}

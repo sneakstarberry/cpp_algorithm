@@ -39,7 +39,7 @@ int main() {
   int h = (int)ceil(log2(N));
   vector<ll> arr(N);
   vector<ll> tree(1 << (h + 1));
-
+  cout << "tree: " << tree.size() << endl;
   for (int i = 0; i < N; i++) {
     cin >> arr[i];
   }

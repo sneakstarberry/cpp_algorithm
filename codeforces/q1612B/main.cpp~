@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+
+using namespace ::std;
+
+int N;
+
+struct Case {
+  int n;
+  int min;
+  int max;
+};
+typedef Case Case;
+
+Case cases[1001];
+void init() {
+  cin >> N;
+
+  for (int i=0; i<N; i++) {
+    cin >> cases[i].n >> cases[i].min >> cases[i].max;
+  }
+};
+
+void solve() {
+  vector<int> result; 
+  for (int i=0; i<N; i++) {
+    result.clear();
+    result.push_back(cases[i].min);
+    int j=0;
+    while(true) {
+      if(cases[i].max == cases[i].n - j) continue;
+      result.push_back(cases[i].n - j);
+      j++;
+      if(result.size() == cases[i].n/2) {
+	break;
+      }
+    }
+  }
+}
+
+int main()
+{
+  init();
+
+  
+  return 0;
+}

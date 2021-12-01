@@ -31,7 +31,7 @@ struct FEED {
 
 FEED bfs(FEED start) {
   queue<FEED> q;
-  priority_queue<FEED> feeds;
+  priority_queue<FEED> feeds ;
   bool is_visited[INF][INF] = {
       false,
   };

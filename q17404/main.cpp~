@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+#define MAX 1001
+
+int COSTS[MAX][MAX];
+int N;
+
+void input()
+{
+  cin >> N;
+  for (int i=0; i<N; i++) {
+    cin >> COSTS[i][i];
+  }
+}
+int main()
+{
+  input();
+  return 0;
+}
+
+
+

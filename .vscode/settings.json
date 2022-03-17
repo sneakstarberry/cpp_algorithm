@@ -13,7 +13,8 @@
         "*.tcc": "cpp",
         "ios": "cpp",
         "set": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "queue": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

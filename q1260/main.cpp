@@ -1,0 +1,75 @@
+#include <iostream>
+#include <vector>
+#include <cstring>
+#include <queue>
+#include <algorithm>
+
+#define MAX 1001
+using namespace std;
+
+int N, M, V;
+
+bool is_visited[MAX];
+vector<int> v[MAX];
+
+void bfs()
+{
+  queue<int> q;
+  q.push(V);
+  is_visited[V] = true;
+
+  while (!q.empty()) {
+    int cur = q.front();
+    q.pop();
+    cout << cur << ' ';
+
+    for (int i=0; i<v[cur].size(); i++) {
+      int nxt = v[cur][i];
+
+      if (is_visited[nxt]) {
+	continue;
+      }
+      is_visited[nxt] = true;
+      q.push(nxt);
+    }
+  }
+  cout << '\n';
+}
+
+void dfs(int cur)
+{
+  cout << cur << ' ';
+  is_visited[cur] = true;
+  for (int i=0; i<v[cur].size(); i++) {
+    int nxt = v[cur][i];
+    if(is_visited[nxt]) continue;
+    
+    dfs(nxt);
+  }
+}
+
+void init()
+{
+  cin >> N >> M >> V;
+
+  for (int i=0; i<M; i++) {
+    int s, e;
+    cin >> s >> e;
+    v[s].push_back(e);
+    v[e].push_back(s);
+  }
+
+  for (int i=1; i<=N; i++) {
+    sort(v[i].begin(), v[i].end());
+  }
+}
+
+int main()
+{
+  init();
+  dfs(V);
+  cout << '\n';
+  memset(is_visited, 0, sizeof(is_visited));
+  bfs();
+  return 0;
+}
